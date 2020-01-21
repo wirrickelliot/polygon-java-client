@@ -1,4 +1,4 @@
-# polygon-java-client
+# Polyblend
 Polygon.io API libraries for Java
 
 ## RESTful Demo
