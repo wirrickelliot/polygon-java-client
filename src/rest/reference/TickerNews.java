@@ -5,7 +5,7 @@ public class TickerNews {
     private Integer perPage;
     private Integer page;
 
-    public TickerNews(Builder builder) {
+    private TickerNews(Builder builder) {
         this.endpoint = builder.endpoint;
         this.perPage = builder.perPage;
         this.page = builder.page;

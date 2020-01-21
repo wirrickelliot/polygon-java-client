@@ -6,7 +6,7 @@ public class StockFinancials {
     private String type;
     private String sort;
 
-    public StockFinancials(Builder builder) {
+    private StockFinancials(Builder builder) {
         this.endpoint = builder.endpoint;
         this.limit = builder.limit;
         this.type = builder.type;

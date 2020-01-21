@@ -1,6 +1,6 @@
 public class Markets {
 
-    public Markets() {}
+    private Markets() {}
 
     public String endpoint() {
         return "/v2/reference/markets";

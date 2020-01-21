@@ -1,6 +1,6 @@
 public class MarketHolidays {
 
-    public MarketHolidays () {}
+    private MarketHolidays () {}
 
     public String endpoint() {
         return "/v1/marketstatus/upcoming";

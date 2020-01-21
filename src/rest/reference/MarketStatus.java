@@ -1,6 +1,6 @@
 public class MarketStatus {
 
-    public MarketStatus() {}
+    private MarketStatus() {}
 
     public String endpoint() {
         return "/v1/marketstatus/now";

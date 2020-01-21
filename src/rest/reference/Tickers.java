@@ -11,7 +11,7 @@ public class Tickers {
     private Integer page;
     private Boolean active;
 
-    public Tickers(Builder builder) {
+    private Tickers(Builder builder) {
         this.sort = builder.sort;
         this.type = builder.type;
         this.market = builder.market;

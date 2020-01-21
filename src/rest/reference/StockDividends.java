@@ -1,7 +1,7 @@
 public class StockDividends {
     private String endpoint;
 
-    public StockDividends(Builder builder) {
+    private StockDividends(Builder builder) {
         this.endpoint = builder.endpoint;
     }
 
