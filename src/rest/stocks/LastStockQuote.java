@@ -1,7 +1,7 @@
-public class LastQuote {
+public class LastStockQuote {
     private String endpoint;
 
-    private LastQuote(Builder builder) {
+    private LastStockQuote(Builder builder) {
         this.endpoint = builder.endpoint;
     }
 
@@ -16,8 +16,8 @@ public class LastQuote {
             this.endpoint = String.format("/v1/last_quote/stocks/%s", symbol);
         }
 
-        public LastQuote build() {
-            return new LastQuote (this);
+        public LastStockQuote build() {
+            return new LastStockQuote (this);
         }
     }
 }

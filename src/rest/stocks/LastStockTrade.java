@@ -1,7 +1,7 @@
-public class LastTrade {
+public class LastStockTrade {
     private String endpoint;
 
-    private LastTrade(Builder builder) {
+    private LastStockTrade(Builder builder) {
         this.endpoint = builder.endpoint;
     }
 
@@ -16,8 +16,8 @@ public class LastTrade {
             this.endpoint = String.format("/v1/last/stocks/%s", symbol);
         }
 
-        public LastTrade build() {
-            return new LastTrade(this);
+        public LastStockTrade build() {
+            return new LastStockTrade(this);
         }
     }
 }

@@ -1,8 +1,8 @@
 public class TickerTypes {
 
-    public TickerTypes() {}
+    private TickerTypes() {}
 
-    private String endpoint() {
+    public String endpoint() {
         return "/v2/reference/types";
     }
 

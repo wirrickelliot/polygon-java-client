@@ -1,7 +1,7 @@
-public class SnapshotGainersLosers{
+public class SnapshotStocksGainersLosers{
     private String endpoint;
 
-    private SnapshotGainersLosers(Builder builder) {
+    private SnapshotStocksGainersLosers(Builder builder) {
         this.endpoint = builder.endpoint;
     }
 
@@ -10,14 +10,14 @@ public class SnapshotGainersLosers{
     }
 
     public static class Builder {
-        private String endpoint = "/v2/snapshot/locale/us/markets/stocks/gainers";
+        private String endpoint;
 
         public Builder(String direction) {
             this.endpoint = String.format("/v2/snapshot/locale/us/markets/stocks/%s", direction);
         }
 
-        public SnapshotGainersLosers build() {
-            return new SnapshotGainersLosers(this);
+        public SnapshotStocksGainersLosers build() {
+            return new SnapshotStocksGainersLosers(this);
         }
     }
 }
