@@ -36,7 +36,7 @@ public class Polygon {
         Polygon poly = new Polygon("QmGyLmPmDT3Y37Q_piVmZa21erlcA2Q2wvz4_Y");
 
         // -- ReferenceTickers --
-        ReferenceTickers referenceTickers = new ReferenceTickers.Builder()
+        Tickers tickers = new Tickers.Builder()
                 .sort("type")
                 .type("cs")
                 .market("stocks")
@@ -46,61 +46,61 @@ public class Polygon {
                 .page(1)
                 .active(true)
                 .build();
-        poly.get(referenceTickers.endpoint());
+        poly.get(tickers.endpoint());
 
         // -- ReferenceTickerTypes --
-        ReferenceTickerTypes referenceTickerTypes = new ReferenceTickerTypes.Builder()
+        TickerTypes tickerTypes = new TickerTypes.Builder()
                 .build();
-        poly.get(referenceTickerTypes.endpoint());
+        poly.get(tickerTypes.endpoint());
 
         // -- ReferenceTickerDetails --
-        ReferenceTickerDetails referenceTickerDetails = new ReferenceTickerDetails.Builder("AAPL")
+        TickerDetails tickerDetails = new TickerDetails.Builder("AAPL")
                 .build();
-        poly.get(referenceTickerDetails.endpoint());
+        poly.get(tickerDetails.endpoint());
 
         // -- ReferenceTickerNews --
-        ReferenceTickerNews referenceTickerNews = new ReferenceTickerNews.Builder("AAPL")
+        TickerNews tickerNews = new TickerNews.Builder("AAPL")
                 .perPage(10)
                 .page(1)
                 .build();
-        poly.get(referenceTickerNews.endpoint());
+        poly.get(tickerNews.endpoint());
 
         // -- ReferenceMarkets --
-        ReferenceMarkets referenceMarkets = new ReferenceMarkets.Builder()
+        Markets markets = new Markets.Builder()
                 .build();
-        poly.get(referenceMarkets.endpoint());
+        poly.get(markets.endpoint());
 
         // -- ReferenceLocales --
-        ReferenceLocales referenceLocales = new ReferenceLocales.Builder()
+        Locales locales = new Locales.Builder()
                 .build();
-        poly.get(referenceLocales.endpoint());
+        poly.get(locales.endpoint());
 
         // -- ReferenceStockSplits --
-        ReferenceStockSplits referenceStockSplits = new ReferenceStockSplits.Builder("AAPL")
+        StockSplits stockSplits = new StockSplits.Builder("AAPL")
                 .build();
-        poly.get(referenceStockSplits.endpoint());
+        poly.get(stockSplits.endpoint());
 
         // --ReferenceStockDividends --
-        ReferenceStockDividends referenceStockDividends = new ReferenceStockDividends.Builder("APPL")
+        StockDividends stockDividends = new StockDividends.Builder("APPL")
                 .build();
-        poly.get(referenceStockDividends.endpoint());
+        poly.get(stockDividends.endpoint());
 
         // -- ReferenceStockFinancials --
-        ReferenceStockFinancials referenceStockFinancials = new ReferenceStockFinancials.Builder("APPL")
+        StockFinancials stockFinancials = new StockFinancials.Builder("APPL")
                 .limit(5)
                 .type("Y")
                 .sort("reportPeriod")
                 .build();
-        poly.get(referenceStockFinancials.endpoint());
+        poly.get(stockFinancials.endpoint());
 
         // -- ReferenceMarketStatus --
-        ReferenceMarketStatus referenceMarketStatus = new ReferenceMarketStatus.Builder()
+        MarketStatus marketStatus = new MarketStatus.Builder()
                 .build();
-        poly.get(referenceMarketStatus.endpoint());
+        poly.get(marketStatus.endpoint());
 
         // -- ReferenceMarketHolidays --
-        ReferenceMarketHolidays referenceMarketHolidays = new ReferenceMarketHolidays.Builder()
+        MarketHolidays marketHolidays = new MarketHolidays.Builder()
                 .build();
-        poly.get(referenceMarketHolidays.endpoint());
+        poly.get(marketHolidays.endpoint());
     }
 }
