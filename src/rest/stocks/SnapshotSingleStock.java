@@ -1,7 +1,7 @@
-public class SnapshotSingle {
+public class SnapshotSingleStock {
     private String endpoint;
 
-    private SnapshotSingle(Builder builder) {
+    private SnapshotSingleStock(Builder builder) {
         this.endpoint = builder.endpoint;
     }
 
@@ -16,8 +16,8 @@ public class SnapshotSingle {
             this.endpoint = String.format("/v2/snapshot/locale/us/markets/stocks/tickers/%s", ticker);
         }
 
-        public SnapshotSingle build() {
-            return new SnapshotSingle(this);
+        public SnapshotSingleStock build() {
+            return new SnapshotSingleStock(this);
         }
     }
 }
