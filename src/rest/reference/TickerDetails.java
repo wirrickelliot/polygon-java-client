@@ -1,23 +1,11 @@
 public class TickerDetails {
     private String endpoint;
 
-    private TickerDetails(Builder builder) {
-        this.endpoint = builder.endpoint;
+    public TickerDetails(String symbol) {
+        this.endpoint = String.format("/v1/meta/symbols/%s/company", symbol);
     }
 
     public String endpoint() {
         return this.endpoint;
-    }
-
-    public static class Builder {
-        private String endpoint;
-
-        public Builder(String symbol) {
-            this.endpoint = String.format("/v1/meta/symbols/%s/company", symbol);
-        }
-
-        public TickerDetails build() {
-            return new TickerDetails(this);
-        }
     }
 }

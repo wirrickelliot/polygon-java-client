@@ -11,7 +11,7 @@ public class Tickers {
     private Integer page;
     private Boolean active;
 
-    private Tickers(Builder builder) {
+    public Tickers(Builder builder) {
         this.sort = builder.sort;
         this.type = builder.type;
         this.market = builder.market;
@@ -24,12 +24,14 @@ public class Tickers {
     }
 
     private void setParams() {
+        String symbol;
         Field[] fields = getClass().getDeclaredFields();
         for (int i = 1; i < fields.length; i++) {
+            symbol = (i == 1) ? "?" : "&";
             try {
                 if (fields[i].get(this) != null) {
-                    this.endpoint = String.format("%s?%s=%s", this.endpoint,
-                            fields[i].getName(), fields[i].get(this));
+                    this.endpoint = String.format("%s%s%s=%s", this.endpoint,
+                            symbol, fields[i].getName(), fields[i].get(this));
                 }
             } catch(IllegalAccessException e){
                 e.printStackTrace();

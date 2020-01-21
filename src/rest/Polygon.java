@@ -14,7 +14,8 @@ public class Polygon {
     }
 
     public String get(String endpoint) {
-        endpoint ="https://api.polygon.io" + endpoint + "?apiKey=" + this.apiKey;
+        String symbol = (endpoint.contains("?")) ? "&" : "?";
+        endpoint = String.format("https://api.polygon.io%s%sapiKey=%s", endpoint, symbol, this.apiKey);
         System.out.printf("%s\n", endpoint);
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(endpoint))
