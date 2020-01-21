@@ -3,7 +3,7 @@ Polygon.io API libraries for Java
 
 ## RESTful Demo
 
-```
+```java
 public static void main(String[] args) {
     Polygon polygon = new Polygon(YOUR_API_KEY);
     Tickers tickers = new Tickers.Builder()
