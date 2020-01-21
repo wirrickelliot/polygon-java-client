@@ -17,12 +17,14 @@ public class HistoricTrades {
     }
 
     private void setParams() {
+        String symbol;
         Field[] fields = getClass().getDeclaredFields();
         for (int i = 1; i < fields.length; i++) {
+            symbol = (!this.endpoint.contains("?")) ? "?" : "&";
             try {
                 if (fields[i].get(this) != null) {
-                    this.endpoint = String.format("%s?%s=%s", this.endpoint,
-                            fields[i].getName(), fields[i].get(this));
+                    this.endpoint = String.format("%s%s%s=%s", this.endpoint,
+                            symbol, fields[i].getName(), fields[i].get(this));
                 }
             } catch(IllegalAccessException e){
                 e.printStackTrace();
