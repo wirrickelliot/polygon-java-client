@@ -3,13 +3,13 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.net.URI;
 
-public class Polygon {
+public class PolyblendRest {
     private String apiKey;
     private HttpClient client = HttpClient.newBuilder()
             .version(HttpClient.Version.HTTP_2)
             .build();
 
-    public Polygon(String apiKey) {
+    public PolyblendRest(String apiKey) {
         this.apiKey = apiKey;
     }
 

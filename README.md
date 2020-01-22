@@ -1,11 +1,11 @@
 # Polyblend
-Polygon.io API libraries for Java
+Java client for Polygon.io API
 
 ## RESTful Demo
 
 ```java
 public static void main(String[] args) {
-    Polygon polygon = new Polygon(YOUR_API_KEY);
+    PolyblendRest polyblendRest = new PolyblendRest(YOUR_API_KEY);
     Tickers tickers = new Tickers.Builder()
                 .sort("type")
                 .type("cs")
@@ -19,8 +19,12 @@ public static void main(String[] args) {
     TickerTypes tickerTypes = new TickerTypes();
     TickerDetails tickerDetails = new TickerDetails("AAPL");
     
-    polygon.get(tickers.endpoint());
-    polygon.get(tickerTypes.endpoint());
-    polygon.get(tickerDetails.endpoint());
+    polyblendRest.get(tickers.endpoint());
+    polyblendRest.get(tickerTypes.endpoint());
+    polyblendRest.get(tickerDetails.endpoint());
 }
 ```
+
+## Requirements
+
+Java 11
