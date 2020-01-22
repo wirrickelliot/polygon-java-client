@@ -1,5 +1,5 @@
-# Polygon.IO Java
-Java client for the Polygon.io API
+# PolygonIO Java
+Java client for the Polygon.io API using only the Java Class Libraries. Requires JDK 11+.
 
 ## RESTful Demo
 
@@ -37,6 +37,8 @@ public static void main(String[] args) {
 ## WebSockets Demo
 
 ```java
+import java.util.function.Function;
+
 public static void main(String[] args) {
     Function<String, String> messageHandler = e -> {
         System.out.println(e);
@@ -49,7 +51,3 @@ public static void main(String[] args) {
     Thread.sleep(1000);
 }
 ```
-
-## Requirements
-
-Java 11
