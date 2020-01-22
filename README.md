@@ -1,5 +1,5 @@
 # Polyblend
-Java client for Polygon.io API
+Java client for the Polygon.io API
 
 ## RESTful Demo
 
@@ -22,6 +22,20 @@ public static void main(String[] args) {
     polyblendRest.get(tickers.endpoint());
     polyblendRest.get(tickerTypes.endpoint());
     polyblendRest.get(tickerDetails.endpoint());
+}
+```
+
+## WebSockets Demo
+
+```java
+public static void main(String[] args) {
+    PolyblendWebSockets polyblendWebSockets = new PolyblendWebSockets(YOUR_API_KEY, "stocks")
+    polyblendWebSockets.open();
+
+    polyblendWebSockets.subscribe("T.AAPL");
+    Thread.sleep(1000);
+
+    polyblendWebSockets.close();
 }
 ```
 
