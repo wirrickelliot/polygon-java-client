@@ -1,11 +1,13 @@
-# Polyblend
+# Polygon.IO Java
 Java client for the Polygon.io API
 
 ## RESTful Demo
 
 ```java
+import java.net.http.HttpResponse;
+
 public static void main(String[] args) {
-    PolyblendRest polyblendRest = new PolyblendRest(YOUR_API_KEY);
+    PolygonIO.Rest restClient = new PolygonIO.Rest(YOUR_API_KEY);
     Tickers tickers = new Tickers.Builder()
                 .sort("type")
                 .type("cs")
@@ -19,9 +21,16 @@ public static void main(String[] args) {
     TickerTypes tickerTypes = new TickerTypes();
     TickerDetails tickerDetails = new TickerDetails("AAPL");
     
-    polyblendRest.get(tickers.endpoint());
-    polyblendRest.get(tickerTypes.endpoint());
-    polyblendRest.get(tickerDetails.endpoint());
+    HttpResponse<String> resp = new HttpResponse();
+
+    resp = restClient.get(tickers.endpoint());
+    System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
+
+    restClient.get(tickerTypes.endpoint());
+    System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
+
+    restClient.get(tickerDetails.endpoint());
+    System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
 }
 ```
 
@@ -29,13 +38,15 @@ public static void main(String[] args) {
 
 ```java
 public static void main(String[] args) {
-    PolyblendWebSockets polyblendWebSockets = new PolyblendWebSockets(YOUR_API_KEY, "stocks")
-    polyblendWebSockets.open();
+    Function<String, String> messageHandler = e -> {
+        System.out.println(e);
+        return null;
+    };
+    PolygonIO.WebSockets wsClient = new PolygonIO.WebSockets(YOUR_API_KEY, messageHandler);
 
-    polyblendWebSockets.subscribe("T.AAPL");
+    wsClient.connect("stocks");
+    wsClient.subscribe("T.AAPL", "T.AMD");
     Thread.sleep(1000);
-
-    polyblendWebSockets.close();
 }
 ```
 
