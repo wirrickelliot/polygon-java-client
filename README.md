@@ -26,15 +26,15 @@ public static void main(String[] args) {
     TickerTypes tickerTypes = new TickerTypes();
     TickerDetails tickerDetails = new TickerDetails("AAPL");
     
-    HttpResponse<String> resp = new HttpResponse();
+    HttpResponse<String> resp;
 
     resp = restClient.get(tickers.endpoint());
     System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
 
-    restClient.get(tickerTypes.endpoint());
+    resp = restClient.get(tickerTypes.endpoint());
     System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
 
-    restClient.get(tickerDetails.endpoint());
+    resp = restClient.get(tickerDetails.endpoint());
     System.out.printf("%s: %s\n", resp.statusCode(), resp.body());
 }
 ```
