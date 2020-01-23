@@ -2,6 +2,10 @@
 # PolygonIO Java
 Java client for the Polygon.io API using only the Java Class Libraries. Requires JDK 11+.
 
+Add to your build via JitPack: https://jitpack.io/#wirrickelliot/polygon-java-client.
+
+
+
 ## RESTful Demo
 
 ```java
