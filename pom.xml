@@ -9,10 +9,6 @@
     <packaging>jar</packaging>
     <name>polygon</name>
 
-    <properties>
-        <maven.compiler.release>11</maven.compiler.release>
-    </properties>
-
     <build>
         <pluginManagement>
             <plugins>
