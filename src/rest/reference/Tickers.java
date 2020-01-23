@@ -33,7 +33,7 @@ public class Tickers {
                     this.endpoint = String.format("%s%s%s=%s", this.endpoint,
                             symbol, fields[i].getName(), fields[i].get(this));
                 }
-            } catch(IllegalAccessException e){
+            } catch(IllegalAccessException e) {
                 e.printStackTrace();
             }
         }

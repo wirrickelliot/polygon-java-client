@@ -7,8 +7,6 @@ import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
 public class PolygonIO {
-    private PolygonIO() {}
-
     public static class Rest {
         private String apiKey;
         private HttpClient client = HttpClient.newBuilder()
@@ -28,7 +26,7 @@ public class PolygonIO {
             HttpResponse<String> response = null;
             try {
                 response = this.client.send(request, HttpResponse.BodyHandlers.ofString());
-            } catch (java.io.IOException | java.lang.InterruptedException e) {
+            } catch(java.io.IOException | java.lang.InterruptedException e) {
                 e.printStackTrace();
             }
             return response;
