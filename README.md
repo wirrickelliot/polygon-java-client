@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/wirrickelliot/polygon-java-client.svg?branch=master)](https://travis-ci.org/wirrickelliot/polygon-java-client)
 # PolygonIO Java
 Java client for the Polygon.io API using only the Java Class Libraries. Requires JDK 11+.
 
