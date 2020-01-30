@@ -1,4 +1,5 @@
-import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class RealtimeCurrencyConversion {
     private String endpoint;
@@ -13,19 +14,15 @@ public class RealtimeCurrencyConversion {
     }
 
     private void setParams() {
-        String symbol;
-        Field[] fields = getClass().getDeclaredFields();
-        for (int i = 1; i < fields.length; i++) {
-            symbol = (!this.endpoint.contains("?")) ? "?" : "&";
-            try {
-                if (fields[i].get(this) != null) {
-                    this.endpoint = String.format("%s%s%s=%s", this.endpoint,
-                            symbol, fields[i].getName(), fields[i].get(this));
-                }
-            } catch(IllegalAccessException e){
-                e.printStackTrace();
-            }
-        }
+        Map<String, String> params = new HashMap<String, String>();
+        if (this.amount != null) params.put("amount", this.amount.toString());
+        if (this.precision != null) params.put("precision", this.precision.toString());
+
+        this.endpoint = this.endpoint + params.entrySet().stream()
+                .map(p -> p.getKey() + "=" + p.getValue())
+                .reduce((p1, p2) -> p1 + "&" + p2)
+                .map(s -> "?" + s)
+                .orElse("");
     }
 
     public String endpoint() {

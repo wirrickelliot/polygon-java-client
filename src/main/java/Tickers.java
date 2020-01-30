@@ -1,4 +1,5 @@
-import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Tickers {
     private String endpoint = "/v2/reference/tickers";
@@ -24,19 +25,21 @@ public class Tickers {
     }
 
     private void setParams() {
-        String symbol;
-        Field[] fields = getClass().getDeclaredFields();
-        for (int i = 1; i < fields.length; i++) {
-            symbol = (!this.endpoint.contains("?")) ? "?" : "&";
-            try {
-                if (fields[i].get(this) != null) {
-                    this.endpoint = String.format("%s%s%s=%s", this.endpoint,
-                            symbol, fields[i].getName(), fields[i].get(this));
-                }
-            } catch(IllegalAccessException e) {
-                e.printStackTrace();
-            }
-        }
+        Map<String, String> params = new HashMap<String, String>();
+        if (this.sort != null) params.put("sort", this.sort);
+        if (this.type != null) params.put("type", this.type);
+        if (this.market != null) params.put("market", this.market);
+        if (this.locale != null) params.put("locale", this.locale);
+        if (this.search != null) params.put("search", this.search);
+        if (this.perPage != null) params.put("perPage", this.perPage.toString());
+        if (this.page != null) params.put("page", this.page.toString());
+        if (this.active != null) params.put("active", this.active.toString());
+
+        this.endpoint = this.endpoint + params.entrySet().stream()
+                .map(p -> p.getKey() + "=" + p.getValue())
+                .reduce((p1, p2) -> p1 + "&" + p2)
+                .map(s -> "?" + s)
+                .orElse("");
     }
 
     public String endpoint() {

@@ -1,4 +1,5 @@
-import java.lang.reflect.Field;
+import java.util.HashMap;
+import java.util.Map;
 
 public class HistoricCryptoTrades {
     private String endpoint;
@@ -6,26 +7,22 @@ public class HistoricCryptoTrades {
     private Integer limit;
 
     private HistoricCryptoTrades(Builder builder) {
-       this.endpoint = builder.endpoint;
-       this.offset = builder.offset;
-       this.limit = builder.limit;
-       this.setParams();
+        this.endpoint = builder.endpoint;
+        this.offset = builder.offset;
+        this.limit = builder.limit;
+        this.setParams();
     }
 
     private void setParams() {
-        String symbol;
-        Field[] fields = getClass().getDeclaredFields();
-        for (int i = 1; i < fields.length; i++) {
-            symbol = (!this.endpoint.contains("?")) ? "?" : "&";
-            try {
-                if (fields[i].get(this) != null) {
-                    this.endpoint = String.format("%s%s%s=%s", this.endpoint,
-                            symbol, fields[i].getName(), fields[i].get(this));
-                }
-            } catch(IllegalAccessException e){
-                e.printStackTrace();
-            }
-        }
+        Map<String, String> params = new HashMap<String, String>();
+        if (this.offset != null) params.put("offset", this.offset.toString());
+        if (this.limit != null) params.put("limit", this.limit.toString());
+
+        this.endpoint = this.endpoint + params.entrySet().stream()
+                .map(p -> p.getKey() + "=" + p.getValue())
+                .reduce((p1, p2) -> p1 + "&" + p2)
+                .map(s -> "?" + s)
+                .orElse("");
     }
 
     public String endpoint() {
