@@ -1,3 +1,5 @@
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -36,7 +38,7 @@ public class Tickers {
         if (this.active != null) params.put("active", this.active.toString());
 
         this.endpoint = this.endpoint + params.entrySet().stream()
-                .map(p -> p.getKey() + "=" + p.getValue())
+                .map(p -> p.getKey() + "=" + URLEncoder.encode(p.getValue(), StandardCharsets.UTF_8))
                 .reduce((p1, p2) -> p1 + "&" + p2)
                 .map(s -> "?" + s)
                 .orElse("");

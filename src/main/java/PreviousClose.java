@@ -1,3 +1,6 @@
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+
 public class PreviousClose {
     private String endpoint;
     private Boolean unadjusted;
@@ -9,7 +12,7 @@ public class PreviousClose {
 
     public String endpoint() {
         if (this.unadjusted != null)
-            return this.endpoint + "?unadjusted=" + this.unadjusted;
+            return this.endpoint + "?unadjusted=" + URLEncoder.encode(this.unadjusted.toString(), StandardCharsets.UTF_8);
         else return this.endpoint;
     }
 
